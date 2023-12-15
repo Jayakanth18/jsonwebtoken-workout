@@ -1,9 +1,9 @@
 const express = require("express");
-const jwt= require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 const app = express();
 
-app.get("/", async(req, res) => {
-    const token = await jwt.sign({myName:'jk'},"uniquekey007")
+app.get("/", (req, res) => {
+  const token = jwt.sign({ myName: "jk" }, "uniquekey007");
   res.json({ message: "homepage", token });
 });
 
