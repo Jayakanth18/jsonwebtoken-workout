@@ -5,7 +5,9 @@ const app = express();
 
 //generating token
 app.get("/", async (req, res) => {
-  const token = await jwt.sign({ date: new Date() }, "uniquekey007");
+  const token = await jwt.sign({ date: new Date() }, "uniquekey007", {
+    expiresIn: 45,
+  });
   res.json({ message: "homepage", token });
 });
 
@@ -21,4 +23,4 @@ app.get("/check/:token", async (req, res) => {
   }
 });
 
-app.listen(8080, () => console.log(`sever is running`));
+app.listen(8000, () => console.log(`sever is running`));
